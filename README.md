@@ -1,4 +1,4 @@
-# Summation of currents based FEM solver
+# Summation of currents electromagnetic solver
 
 This solver can be used to predict the self-inductance and mutual inductance of coils, as well as the inductance change due to the presence of a conductive object near the coil. To do so the solver can create object that only have mesh elements on the surface in order to be able to model the skin effect.
 

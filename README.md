@@ -8,8 +8,13 @@ open source author version
 
 The code for calibrating a printer can be found in:
 
-# Example usage
+# Typical usage
+The induced current density example demonstrates how to use the solver to calculate the current density induced in a 3D printer nozzle by the coil
 
+The change impedance example demonstrates how to calculate the change impedance due to the presence of a 3D printer nozzle.
+
+# Requirements
+This program uses the gpu support in Matlab's parallel processing toolbox to perform some big matrix invertions. This means that in order to run the script you will need a NVIDIA CUDA enabled GPU with a couple of gigs of memory.
 
 # Acknowledgement
 This work was developed within the Wearable Robotics programme, funded by the Dutch Research Council (NWO)

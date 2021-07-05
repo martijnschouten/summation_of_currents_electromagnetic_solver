@@ -1,6 +1,8 @@
 # Summation of currents based FEM solver
 
-This solver can be used to predict the self-inductance and mutual inductance of coils, as well as the inductance change due to the presence of a conductive object near the coil. The code has been developed to predict the influence of a 3D nozzle on the inductance of a coil in order to be able to calibration the nozzle offsets in x and y. The paper describing this method can be found in:
+This solver can be used to predict the self-inductance and mutual inductance of coils, as well as the inductance change due to the presence of a conductive object near the coil. To do so the solver can create object that only have mesh elements on the surface in order to be able to model the skin effect.
+
+The code has been developed to predict the influence of a 3D nozzle on the inductance of a coil in order to be able to calibration the nozzle offsets in x and y. The paper describing this method can be found in:
 doi to actual published paper
 open source author version
 

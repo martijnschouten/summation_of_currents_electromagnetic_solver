@@ -9,9 +9,14 @@ open source author version
 The code for calibrating a printer can be found in:
 
 # Typical usage
-The induced current density example demonstrates how to use the solver to calculate the current density induced in a 3D printer nozzle by the coil
+1. Copy SOC_object.m into your matlab work folder
+1. Make an coil using object using the SOC_object class `coil = SOC_object'
+1. Make an nozzle using object using the SOC_object class `nozzle = SOC_object'
+1. Set the parameters of the geometry and mesh of both the coil and the nozzle
+1. Build the mesh
+1. Permform calculations
 
-The change impedance example demonstrates how to calculate the change impedance due to the presence of a 3D printer nozzle.
+Run `doc SOC_object` in your matlab terminal to get more info on the different functions to set the parameters, mesh and do calculations. Also make sure to check out the example scripts.
 
 # Requirements
 This program uses the gpu support in Matlab's parallel processing toolbox to perform some big matrix invertions. This means that in order to run the script you will need a NVIDIA CUDA enabled GPU with a couple of gigs of memory.

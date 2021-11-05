@@ -19,7 +19,10 @@ The code for calibrating a printer can be found in:
 Run `doc SOC_object` in your matlab terminal to get more info on the different functions to set the parameters, mesh and do calculations. Also make sure to check out the example scripts.
 
 # Requirements
-This program uses the gpu support in Matlab's parallel processing toolbox to perform some big matrix invertions. This means that in order to run the script you will need a NVIDIA CUDA enabled GPU with a couple of gigs of memory.
+This program by default uses the gpu support in Matlab's parallel processing toolbox to perform some big matrix invertions. This means that in order to run at a reasonable speed the script you will need a NVIDIA CUDA enabled GPU with a couple of gigs of memory. If you don't have such a GPU the matrix inversions can also be run on the cpu by using
+'''
+coil.use_gpu = false
+'''
 
 # Acknowledgement
 This work was developed within the Wearable Robotics programme, funded by the Dutch Research Council (NWO)

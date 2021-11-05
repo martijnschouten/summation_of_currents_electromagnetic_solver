@@ -6,7 +6,7 @@ The code has been developed to predict the influence of a 3D nozzle on the induc
 doi to actual published paper
 open source author version
 
-The code for calibrating a printer can be found in:
+A GUI for calibrating a printer in combination with a LDC1101EVM can be found [here](https://github.com/martijnschouten/inductive_calibration_GUI).
 
 # Typical usage
 1. Copy SOC_object.m into your matlab work folder

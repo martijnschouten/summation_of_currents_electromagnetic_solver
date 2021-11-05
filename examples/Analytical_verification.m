@@ -59,12 +59,12 @@ nphiN = nphiL;%number of elements of the coil in radial direction
 xpos = 0;
 
 for i1 = 1:length(nphiL)
-    sense_coil = summation_of_currents;
+    sense_coil = SOC_object;
     sense_coil = sense_coil.set_geometry(HL,DL1,DL2,NL,RhoC,0,0);
     sense_coil = sense_coil.set_mesh(nxL,nzL,nphiL(i1));
     sense_coil = sense_coil.build_single_loop();
 
-    nozzle = summation_of_currents;
+    nozzle = SOC_object;
     nozzle = nozzle.set_geometry(HN,DN1,DN2,NN,RhoB,xpos,zpos);
     nozzle = nozzle.set_mesh(nxN,nzN,nphiN(i1));
     nozzle = nozzle.build_single_loop();

@@ -175,7 +175,7 @@ classdef SOC_object
             else
                 M_CC = obj.inductance_matrix_gpu(obj.r_gpu,f);
             end
-            L = (obj.N^2)/(obj.nx*obj.nz*O)*ones(1,3)*diag(obj.dl.'*M_CC*obj.el);
+            L = (obj.N^2)/(obj.nx*obj.nz*O)*trace(obj.dl.'*M_CC*obj.el);
             if obj.show_waitbar
                 close(f)
             end
@@ -197,7 +197,7 @@ classdef SOC_object
             else
                 M_CN = coil.inductance_matrix_gpu(obj.r_gpu,f);
             end
-            L = (obj.N^2)/(obj.nx*obj.nz*O)*ones(1,3)*diag(obj.dl.'*M_CN*coil.el);
+            L = (obj.N^2)/(obj.nx*obj.nz*O)*trace(obj.dl.'*M_CN*coil.el);
             if obj.show_waitbar
                 close(f)
             end
@@ -218,7 +218,7 @@ classdef SOC_object
             else
                 M_CC = obj.inductance_matrix(obj.r,f);
             end
-            Z = (obj.N^2)*1i*frequency*2*pi/(obj.nx*obj.nz*O)*ones(1,3)*diag(obj.dl.'*M_CC*obj.el)+obj.resistance();
+            Z = (obj.N^2)*1i*frequency*2*pi/(obj.nx*obj.nz*O)*trace(obj.dl.'*M_CC*obj.el)+obj.resistance();
             if obj.show_waitbar
                 close(f)
             end
@@ -274,12 +274,12 @@ classdef SOC_object
             else
                 O = obj.H*((obj.D2-obj.D1)/2);
             end
-            part1 = -(obj.N^2*w^2)/(obj.nx*obj.nz*O*nozzle.Rho)*ones(1,3);
+            part1 = -(obj.N^2*w^2)/(obj.nx*obj.nz*O*nozzle.Rho);
             part2 = obj.dl.'*Mcn;
             part3 = eye(nozzle.ntot)-1i*w/nozzle.Rho*Mnn;
             part4 = Mnc*obj.el;
             part5 = part3\part4;
-            dZ = part1*diag(part2*part5);
+            dZ = part1*trace(part2*part5);
             dZ = gather(dZ);
             if obj.show_waitbar
                 close(f)

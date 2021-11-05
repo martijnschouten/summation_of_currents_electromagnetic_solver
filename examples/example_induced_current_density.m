@@ -2,7 +2,7 @@ clear all
 close all
 close all force
 
-addpath('exportfig')
+addpath("../")
 
 RhoC = 1.68e-8;%ohm meter
 NL = 55;%number of windings of coil 
@@ -67,7 +67,6 @@ set(gcf,'Position',[0,300,350,300])
 xlabel('x position (mm)')
 ylabel('y position (mm)')
 zlabel('z position (mm)')
-print(gcf,'../Images/coil_mesh.png','-dpng','-r600');
 
 figure
 nozzle.plot_geometry(3,[1e3,1e3,1e3]);
@@ -75,7 +74,6 @@ xlabel('x position (mm)')
 ylabel('y position (mm)')
 zlabel('z position (mm)')
 set(gcf,'Position',[350,300,350,300])
-print(gcf,'../Images/nozzle_mesh.png','-dpng','-r600');
 figure
 sense_coil.plot_geometry(3,[1e3,1e3,1e3]);
 xlabel('x position (mm)')
@@ -94,7 +92,7 @@ ylabel('y position (mm)')
 zlabel('z position (mm)')
 view(2)
 set(gcf,'Position',[700,300,350,300])
-print(gcf,'../Images/wire_vectors.png','-dpng','-r600');
+
     
 figure
 sense_coil.plot_induced_current_density_2d(nozzle,1,f,0,[1e3,1e3,1e-6],[0,-HL*1e3,0])
@@ -108,7 +106,7 @@ set(gcf,'Position',[1050,300,450,300])
 c = colorbar;
 c.Label.String = 'Induced current density (MAm^{-2})';
 
-export_fig('../Images/induced current.png', '-dpng', '-transparent', '-r600');
+
 
 figure
 T = table2array(readtable('I_induced.csv'));
@@ -122,8 +120,6 @@ xlabel('x position(mm)')
 c = colorbar;
 c.Label.String = 'Induced current density (MAm^{-2})';
 
-set(gcf,'Position',[0,600,450,300])
-print(gcf,'../Images/induced current comsol.png','-dpng','-r600');
 
 
 figure
@@ -137,12 +133,9 @@ xlim(1e3*[0,DN2/2])
 ylim(1e3*[zpos-HL,zpos-HL+HN])
 ylabel('z position(mm)')
 xlabel('x position(mm)')
-coilsum
 c = colorbar;
 c.Label.String = 'Induced current density (MAm^{-2})';
 
-set(gcf,'Position',[0,600,450,300])
-print(gcf,'../Images/difference comsol matlab.png','-dpng','-r600');
 
 figure
 sense_coil.plot_current_density_difference_ratio(nozzle,1,f,y_comsol,x_comsol,J_comsol,0,[1e3,1e3,1],[0,-HL*1e3,0])
@@ -156,8 +149,6 @@ caxis([0 50])
 c = colorbar;
 c.Label.String = 'Error (%)';
 
-set(gcf,'Position',[0,600,450,300])
-print(gcf,'../Images/difference comsol matlab ratio.png','-dpng','-r600');
 
 
 

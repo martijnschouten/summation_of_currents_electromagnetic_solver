@@ -2,6 +2,8 @@ clear all
 close all
 close all force
 
+addpath("../")
+
 RhoC = 1.68e-8;%ohm meter
 NL = 55;%number of windings of coil 
 HL = 1.4e-3;%m height of coil

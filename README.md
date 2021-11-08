@@ -2,11 +2,9 @@
 
 This solver can be used to predict the self-inductance and mutual inductance of coils, as well as the inductance change due to the presence of a conductive object near the coil. To do so the solver can create object that only have mesh elements on the surface in order to be able to model the skin effect.
 
-The code has been developed to predict the influence of a 3D nozzle on the inductance of a coil in order to be able to calibration the nozzle offsets in x and y. The paper describing this method can be found in:
-doi to actual published paper
-open source author version
+The code has been developed to predict the influence of a 3D nozzle on the inductance of a coil in order to be able to calibration the nozzle offsets in x and y. The method has been described in the follow [paper]() (open access version [available]())
 
-The code for calibrating a printer can be found in:
+A GUI for calibrating a printer in combination with a LDC1101EVM can be found [here](https://github.com/martijnschouten/inductive_calibration_GUI).
 
 # Typical usage
 1. Copy SOC_object.m into your matlab work folder
@@ -19,7 +17,10 @@ The code for calibrating a printer can be found in:
 Run `doc SOC_object` in your matlab terminal to get more info on the different functions to set the parameters, mesh and do calculations. Also make sure to check out the example scripts.
 
 # Requirements
-This program uses the gpu support in Matlab's parallel processing toolbox to perform some big matrix invertions. This means that in order to run the script you will need a NVIDIA CUDA enabled GPU with a couple of gigs of memory.
+This program by default uses the gpu support in Matlab's parallel processing toolbox to perform some big matrix invertions. This means that in order to run at a reasonable speed the script you will need a NVIDIA CUDA enabled GPU with a couple of gigs of memory. If you don't have such a GPU the matrix inversions can also be run on the cpu by using
+```
+coil.use_gpu = false
+```
 
 # Acknowledgement
 This work was developed within the Wearable Robotics programme, funded by the Dutch Research Council (NWO)

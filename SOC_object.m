@@ -126,14 +126,14 @@ classdef SOC_object
         
         
 
-        function plot_geometry(obj,C,prefix)
+        function plot_geometry(obj,S,prefix)
             %plot_geometry - Plot the geometry of the object
             %   plot_geometry(C,prefix) plot the geometry with colour C and
             %   all direction scaled by a factor prefix
             if obj.r == 0
                error('error: cannot plot geometry. Make sure the coil has been build.') 
             end
-            scatter3(obj.r(:,1)*prefix(1),obj.r(:,2)*prefix(2),obj.r(:,3)*prefix(3),C)
+            scatter3(obj.r(:,1)*prefix(1),obj.r(:,2)*prefix(2),obj.r(:,3)*prefix(3),S,'.')
             daspect([1 1 1])
         end
 

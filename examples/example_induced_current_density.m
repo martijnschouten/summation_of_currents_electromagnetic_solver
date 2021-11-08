@@ -69,7 +69,7 @@ ylabel('y position (mm)')
 zlabel('z position (mm)')
 
 figure
-nozzle.plot_geometry(3,[1e3,1e3,1e3]);
+nozzle.plot_geometry(2,[1e3,1e3,1e3]);
 xlabel('x position (mm)')
 ylabel('y position (mm)')
 zlabel('z position (mm)')
@@ -84,6 +84,10 @@ nozzle.plot_geometry(3,[1e3,1e3,1e3]);
 xlabel('x position (mm)')
 ylabel('y position (mm)')
 zlabel('z position (mm)')
+set(gcf,'Position',[300,300,350,500])
+xlim([-1.2,1.2])
+ylim([-1.2,1.2])
+zlim([0,4])
 
 figure
 sense_coil.plot_surface_vectors([1e3,1e3,1e3])

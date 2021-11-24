@@ -169,7 +169,11 @@ classdef SOC_object
             else
                 f = 0;
             end
-            O = obj.H*((obj.D2-obj.D1)/2);
+            if obj.is_circular
+                O = obj.H*((obj.D2-obj.D1)/2)*pi/4;
+            else
+                O = obj.H*((obj.D2-obj.D1)/2);
+            end
             if obj.use_gpu
                 M_CC = obj.inductance_matrix(obj.r,f);
             else
@@ -191,7 +195,11 @@ classdef SOC_object
             else
                 f = 0;
             end
-            O = obj.H*((obj.D2-obj.D1)/2);
+            if obj.is_circular
+                O = obj.H*((obj.D2-obj.D1)/2)*pi/4;
+            else
+                O = obj.H*((obj.D2-obj.D1)/2);
+            end
             if obj.use_gpu
                 M_CN = coil.inductance_matrix(obj.r,f);
             else
@@ -218,7 +226,7 @@ classdef SOC_object
             else
                 M_CC = obj.inductance_matrix(obj.r,f);
             end
-            Z = (obj.N^2)*1i*frequency*2*pi/(obj.nx*obj.nz*O)*trace(obj.dl.'*M_CC*obj.el)+obj.resistance();
+            Z = (obj.N^2)*1i*frequency*2*pi/(obj.nx*obj.nz*O)*trace(obj.dl.'*M_CC*obj.el)+(obj.N^2)*obj.Rho/(obj.nx*obj.nz*O)*trace(obj.dl.'*obj.el);
             if obj.show_waitbar
                 close(f)
             end
@@ -287,16 +295,25 @@ classdef SOC_object
         end
 
         function R = resistance(obj)
-             %resistance - Calculates the DC resistance of a coil
-             %   resistance() Calculates the DC resistance of this coil
-             if obj.is_circular
-                 A = obj.H*((obj.D2-obj.D1)/2)*pi/4/obj.N;
-             else
-                 A = obj.H*((obj.D2-obj.D1)/2)/obj.N;
-             end
-             labs = vecnorm(obj.dl,2,2);
-             L = sum(labs)/obj.nx/obj.nz*obj.N;
-             R = obj.Rho*L/A;
+             if obj.show_waitbar
+                f = waitbar(0,'Calculating self inductance matrix');
+            else
+                f = 0;
+            end
+            if obj.is_circular
+                O = obj.H*((obj.D2-obj.D1)/2)*pi/4;
+            else
+                O = obj.H*((obj.D2-obj.D1)/2);
+            end
+            if obj.use_gpu
+                M_CC = obj.inductance_matrix(obj.r,f);
+            else
+                M_CC = obj.inductance_matrix_gpu(obj.r_gpu,f);
+            end
+            R = (obj.N^2)/(obj.nx*obj.nz*O)*obj.Rho*trace(obj.dl.'*obj.el);
+            if obj.show_waitbar
+                close(f)
+            end
         end
         
         function depth = skin_depth(obj,f)

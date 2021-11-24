@@ -48,10 +48,6 @@ Lp = (imag(Zself).^2+real(Zself).^2)./imag(Zself)./f/2/pi
 Rp = (imag(Zself).^2+real(Zself).^2)./real(Zself)
 
 
-R = sense_coil.resistance();
-disp("Resistance: ")
-disp(R);
-
 
 nozzle = SOC_object;
 nozzle = nozzle.set_nozzle_geometry(HN,DN1,DN2,RhoB,xpos,zpos,taper_width,taper_angle,hole_offset,rotation);

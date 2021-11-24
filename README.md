@@ -8,8 +8,8 @@ A GUI for calibrating a printer in combination with a LDC1101EVM can be found [h
 
 # Typical usage
 1. Copy SOC_object.m into your matlab work folder
-1. Make an coil using object using the SOC_object class `coil = SOC_object'
-1. Make an nozzle using object using the SOC_object class `nozzle = SOC_object'
+1. Make an coil using object using the SOC_object class `coil = SOC_object`
+1. Make an nozzle using object using the SOC_object class `nozzle = SOC_object`
 1. Set the parameters of the geometry and mesh of both the coil and the nozzle
 1. Build the mesh
 1. Permform calculations
@@ -21,6 +21,9 @@ This program by default uses the gpu support in Matlab's parallel processing too
 ```
 coil.use_gpu = false
 ```
+
+# Examples
+
 
 # Acknowledgement
 This work was developed within the Wearable Robotics programme, funded by the Dutch Research Council (NWO)

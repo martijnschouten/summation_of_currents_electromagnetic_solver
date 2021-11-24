@@ -22,9 +22,6 @@ This program by default uses the gpu support in Matlab's parallel processing too
 coil.use_gpu = false
 ```
 
-# Examples
-
-
 # Acknowledgement
 This work was developed within the Wearable Robotics programme, funded by the Dutch Research Council (NWO)
 

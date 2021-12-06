@@ -78,17 +78,20 @@ subplot(ax1)
 plot(xpos*1e3,ddLp2*1e12,style)
 %ylabel('\Delta\Delta Inductance (H)')
 %xlabel('Nozzle position (m)')
+xline(0,':k')
 hold on
 subplot(ax2)
 plot(xpos*1e3,ddRp2*1e3,style)
 %ylabel('\Delta\Delta Parallel resistance (\Omega)')
 %xlabel('Nozzle position (m)')
+xline(0,':k')
 
 leg = legend('50 μm offset', '100 μm offset');
 set(gcf,'Position',[0,100,450,600])
 leg.Position = [0.629472934472934,0.450277777777778,0.275887573964497,0.058611111111112];
 
-export_fig('../Images/inductance_vs_offset.png', '-dpng', '-transparent', '-r600');
+
+%export_fig('../Images/inductance_vs_offset.png', '-dpng', '-transparent', '-r600');
 
 xpos = double(xpos*1000);
 dLptot = double(dLptot*1e9);
@@ -127,4 +130,5 @@ for i1 = 1:3
     dRpfit = pfit(2) + pfit(3)*(xpos-pfit(1)).^2 + pfit(4)*(xpos-pfit(1)).^4 + pfit(5)*(xpos-pfit(1)).^6 + pfit(6)*(xpos-pfit(1)).^8
     plot(xpos,dRpfit)
 end
+
 

@@ -66,6 +66,7 @@ plot(xpos*1e3,ddLp1*1e12,style)
 ylabel('\Delta \Delta Parallel inductance (pH)')
 xlabel('Nozzle position (mm)')
 hold on
+xline(0,':k')
 ax2 = subplot(2,1,2);
 plot(xpos*1e3,ddRp1*1e3,style)
 ylabel('\Delta \Delta Parallel resistance (m\Omega)')
@@ -73,6 +74,8 @@ xlabel('Nozzle position (mm)')
 
 ddLp2 = dLptot(3,:)-dLptot(1,:)
 ddRp2 = dRptot(3,:)-dRptot(1,:)
+
+
 hold on
 subplot(ax1)
 plot(xpos*1e3,ddLp2*1e12,style)
@@ -83,12 +86,13 @@ subplot(ax2)
 plot(xpos*1e3,ddRp2*1e3,style)
 %ylabel('\Delta\Delta Parallel resistance (\Omega)')
 %xlabel('Nozzle position (m)')
+xline(0,':k')
 
 leg = legend('1 degree', '2 degree')
 set(gcf,'Position',[0,100,450,600])
 %leg.Position = [0.62794503703308,0.44938889569189,0.277135235219664,0.060833334604899]
 
-export_fig('../Images/inductance_vs_rotation.png', '-dpng', '-transparent', '-r600');
+%export_fig('../Images/inductance_vs_rotation.png', '-dpng', '-transparent', '-r600');
 
 xpos = double(xpos*1000);
 dLptot = double(dLptot*1e9);

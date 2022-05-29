@@ -70,6 +70,7 @@ xlabel('x position (mm)')
 ylabel('y position (mm)')
 zlabel('z position (mm)')
 set(gcf,'Position',[350,300,350,300])
+
 figure
 sense_coil.plot_geometry(3,[1e3,1e3,1e3]);
 xlabel('x position (mm)')
@@ -85,6 +86,12 @@ xlim([-1.2,1.2])
 ylim([-1.2,1.2])
 zlim([0,4])
 
+set(gcf,'Units','Inches');
+pos = get(gcf,'Position');
+set(gcf,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
+exportgraphics(gcf,'../../inductive 3d printer calibration 2/Images/geometry_matlab.pdf','ContentType','vector');
+
+
 figure
 sense_coil.plot_surface_vectors([1e3,1e3,1e3])
  xlabel('x position (mm)')
@@ -92,6 +99,11 @@ ylabel('y position (mm)')
 zlabel('z position (mm)')
 view(2)
 set(gcf,'Position',[700,300,350,300])
+
+set(gcf,'Units','Inches');
+pos = get(gcf,'Position');
+set(gcf,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
+exportgraphics(gcf,'../../inductive 3d printer calibration 2/Images/wire_vectors.pdf','ContentType','vector');
 
     
 figure
@@ -106,7 +118,10 @@ set(gcf,'Position',[1050,300,450,300])
 c = colorbar;
 c.Label.String = 'Induced current density (MAm^{-2})';
 
-
+set(gcf,'Units','Inches');
+pos = get(gcf,'Position');
+set(gcf,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
+exportgraphics(gcf,'../../inductive 3d printer calibration 2/Images/induced current.pdf','ContentType','vector');
 
 figure
 T = table2array(readtable('I_induced.csv'));
@@ -120,6 +135,10 @@ xlabel('x position(mm)')
 c = colorbar;
 c.Label.String = 'Induced current density (MAm^{-2})';
 
+set(gcf,'Units','Inches');
+pos = get(gcf,'Position');
+set(gcf,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
+exportgraphics(gcf,'../../inductive 3d printer calibration 2/Images/induced current comsol.pdf','ContentType','vector');
 
 
 figure
@@ -136,6 +155,11 @@ xlabel('x position(mm)')
 c = colorbar;
 c.Label.String = 'Induced current density (MAm^{-2})';
 
+set(gcf,'Units','Inches');
+pos = get(gcf,'Position');
+set(gcf,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
+exportgraphics(gcf,'../../inductive 3d printer calibration 2/Images/difference comsol matlab.pdf','ContentType','vector');
+
 
 figure
 sense_coil.plot_current_density_difference_ratio(nozzle,1,f,y_comsol,x_comsol,J_comsol,0,[1e3,1e3,1],[0,-HL*1e3,0])
@@ -149,6 +173,10 @@ caxis([0 50])
 c = colorbar;
 c.Label.String = 'Error (%)';
 
+set(gcf,'Units','Inches');
+pos = get(gcf,'Position');
+set(gcf,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
+exportgraphics(gcf,'../../inductive 3d printer calibration 2/Images/difference comsol matlab ratio.pdf','ContentType','vector');
 
 
 

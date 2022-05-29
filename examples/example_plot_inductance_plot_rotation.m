@@ -67,6 +67,7 @@ ylabel('\Delta \Delta Parallel inductance (pH)')
 xlabel('Nozzle position (mm)')
 hold on
 xline(0,':k')
+yline(0,':k')
 ax2 = subplot(2,1,2);
 plot(xpos*1e3,ddRp1*1e3,style)
 ylabel('\Delta \Delta Parallel resistance (m\Omega)')
@@ -87,11 +88,16 @@ plot(xpos*1e3,ddRp2*1e3,style)
 %ylabel('\Delta\Delta Parallel resistance (\Omega)')
 %xlabel('Nozzle position (m)')
 xline(0,':k')
+yline(0,':k')
 
 leg = legend('1 degree', '2 degree')
 set(gcf,'Position',[0,100,450,600])
 %leg.Position = [0.62794503703308,0.44938889569189,0.277135235219664,0.060833334604899]
 
+set(gcf,'Units','Inches');
+pos = get(gcf,'Position');
+set(gcf,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
+exportgraphics(gcf,'../../inductive 3d printer calibration 2/Images/inductance_vs_rotation.pdf','ContentType','vector');
 %export_fig('../Images/inductance_vs_rotation.png', '-dpng', '-transparent', '-r600');
 
 xpos = double(xpos*1000);

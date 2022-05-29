@@ -79,12 +79,14 @@ plot(xpos*1e3,ddLp2*1e12,style)
 %ylabel('\Delta\Delta Inductance (H)')
 %xlabel('Nozzle position (m)')
 xline(0,':k')
+yline(0,':k')
 hold on
 subplot(ax2)
 plot(xpos*1e3,ddRp2*1e3,style)
 %ylabel('\Delta\Delta Parallel resistance (\Omega)')
 %xlabel('Nozzle position (m)')
 xline(0,':k')
+yline(0,':k')
 
 leg = legend('50 μm offset', '100 μm offset');
 set(gcf,'Position',[0,100,450,600])
@@ -92,6 +94,10 @@ leg.Position = [0.629472934472934,0.450277777777778,0.275887573964497,0.05861111
 
 
 %export_fig('../Images/inductance_vs_offset.png', '-dpng', '-transparent', '-r600');
+set(gcf,'Units','Inches');
+pos = get(gcf,'Position');
+set(gcf,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
+exportgraphics(gcf,'../../inductive 3d printer calibration 2/Images/inductance_vs_offset.pdf','ContentType','vector');
 
 xpos = double(xpos*1000);
 dLptot = double(dLptot*1e9);
